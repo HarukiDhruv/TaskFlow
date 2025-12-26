@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import SplashScreen from "./components/SplashScreen";
 import { Onboarding } from "./components/Onboarding";
 
+
 const queryClient = new QueryClient();
 const ONBOARDING_KEY = 'taskflow_onboarding_complete';
 
