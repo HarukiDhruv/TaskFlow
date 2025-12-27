@@ -15,7 +15,9 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
+
       includeAssets: ["favicon.ico", "robots.txt"],
+
       manifest: {
         name: "TaskFlow",
         short_name: "TaskFlow",
@@ -45,8 +47,13 @@ export default defineConfig(({ mode }) => ({
           },
         ],
       },
+
       workbox: {
+        // 👇 Exclude large OG image from precache
+        globIgnores: ["**/og.png"],
+
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -66,6 +73,7 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
